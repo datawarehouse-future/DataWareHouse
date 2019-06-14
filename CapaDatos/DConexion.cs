@@ -8,6 +8,6 @@ namespace CapaDatos
 {
     class DConexion
     {
-        public static string Cn = "Data Source=(local); Initial Catalog=dwFuture; Integrated Security=true";
+        public static string Cn = "Data Source=(noquiero); Initial Catalog=dwFuture; Integrated Security=true";
     }
 }
