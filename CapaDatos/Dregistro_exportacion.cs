@@ -11,6 +11,7 @@ namespace CapaDatos
 {
    public class Dregistro_exportacion
     {
+
         private string _idusuario;
         private string _mes;
         private string _año;
