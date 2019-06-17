@@ -29,121 +29,66 @@ namespace CapaPresentación
         private void button1_Click(object sender, EventArgs e)
         {
 
-            try
-            {
-                int resultado = Convert.ToInt16(txtMES.Text) + 1;
-                int ultimoAño = Convert.ToInt16(txtAÑO.Text);
-                if (lbMES.Text == "Mes" || txtAÑOEX.Text == "")
-                {
-                    MessageBox.Show("Error, Verifique los campos para exportar");
-                }
-                else
-                {
-                    int resultadoB = Convert.ToInt16(txtMESEX.Text);
-                    int ultimoAño2 = Convert.ToInt16(txtAÑOEX.Text);
-
-                    if (txtMES.Text == "12")
-                    {
-                        ultimoAño = ultimoAño + 1;
-                        resultado = 1;
-                    }
-                    if ((resultado == resultadoB) && (ultimoAño == ultimoAño2))
-                    {
-                        int mes = Convert.ToInt16(txtMESEX.Text);
-                        int año = Convert.ToInt16(txtAÑOEX.Text);
-                        Guardar_archivo_tiempo(ruta_tiempo,mes,año.ToString());
-                        tabla = Ntabla_dimensiones.Hventa(mes,año);
-                        Guardar_archivo_hventa(ruta_venta,tabla);
-                        if (tabla.Rows.Count == 0)
-                        {MessageBox.Show("Error, No se ha encontrado datos en el periodo para exportar");}
-                        else
-                        {
-                            DateTime fecha = DateTime.Today;
-                            string fecha_Actual = Convert.ToString(fecha.ToString("dd-MM-yyyy"));
-                            string hora = DateTime.Now.Hour.ToString("D2") + ":" + DateTime.Now.Minute.ToString("D2") + ":" + DateTime.Now.Second.ToString("D2");
-                            MessageBox.Show("Datos exportados correctamente");
-                            resp = Nregistro_exportacion.RegistrarDW("1", lbMES.Text, txtAÑOEX.Text, hora, fecha_Actual);
-                            ultimo_exportado();
-                            sugerir();
-                            cambiar_mes();
-                        }
-                    }
-                    else
-                    {
-                        MessageBox.Show("ERROR, SE DEBE EXPORTAR EL AÑO CON LOS MESES CONTINUOS ", "System DW", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-
-
-                }
-            }
-            catch (Exception)
-            {
-                if (lbMES.Text == "Mes" || txtAÑOEX.Text == "")
-                {
-                    MessageBox.Show("Error, Verifique los campos para exportar");
-                }
-                else
-                {
-                    int mes = Convert.ToInt16(txtMESEX.Text);
-                    int año = Convert.ToInt16(txtAÑOEX.Text);
-                    Guardar_archivo_tiempo(ruta_tiempo, mes, año.ToString());
-                    tabla = Ntabla_dimensiones.Hventa(mes, año);
-                    Guardar_archivo_hventa(ruta_venta, tabla);
-
-                    if (tabla.Rows.Count == 0)
-                    {
-                        MessageBox.Show("Error, No se ha encontrado datos en el periodo para exportar");
-                    }
-                    else
-                    {
-                        DateTime fecha = DateTime.Today;
-                        string fecha_Actual = Convert.ToString(fecha.ToString("dd-MM-yyyy"));
-                        string hora = DateTime.Now.Hour.ToString("D2") + ":" + DateTime.Now.Minute.ToString("D2") + ":" + DateTime.Now.Second.ToString("D2");
-
-
-
-                        MessageBox.Show("Datos exportados correctamente");
-                        resp = Nregistro_exportacion.RegistrarDW("1", lbMES.Text, txtAÑOEX.Text, hora, fecha_Actual);
-                        ultimo_exportado();
-                        sugerir();
-                        cambiar_mes();
-
-                    }
-
-                }
-
-            }
+            
 
         }
         public void cambiar_mes()
         {
             string mes = txtMESEX.Text;
-            if (mes == "1")
-                lbMES.Text = "Enero";
-            else if (mes == "2")
-                lbMES.Text = "Febrero";
-            else if (mes == "3")
-                lbMES.Text = "Marzo";
-            else if (mes == "4")
-                lbMES.Text = "Abril";
-            else if (mes == "5")
-                lbMES.Text = "Mayo";
-            else if (mes == "6")
-                lbMES.Text = "Junio";
-            else if (mes == "7")
-                lbMES.Text = "Julio";
-            else if (mes == "8")
-                lbMES.Text = "Agosto";
-            else if (mes == "9")
-                lbMES.Text = "Septiembre";
-            else if (mes == "10")
-                lbMES.Text = "Octubre";
-            else if (mes == "11")
-                lbMES.Text = "Noviembre";
-            else if (mes == "12")
-                lbMES.Text = "Diciembre";
-            else
-                lbMES.Text = "Mes";
+
+            switch (mes)
+            {
+                case "1":
+                case "01":
+                    lbMES.Text = "Enero";
+                    break;
+                case "2":
+                case "02":
+                    lbMES.Text = "Febrero";
+                    break;
+                case "3":
+                case "03":
+                    lbMES.Text = "Marzo";
+                    break;
+                case "4":
+                case "04":
+                    lbMES.Text = "Abril";
+                    break;
+                case "5":
+                case "05":
+                    lbMES.Text = "Mayo";
+                    break;
+                case "6":
+                case "06":
+                    lbMES.Text = "Junio";
+                    break;
+                case "7":
+                case "07":
+                    lbMES.Text = "Julio";
+                    break;
+                case "8":
+                case "08":
+                    lbMES.Text = "Agosto";
+                    break;
+                case "9":
+                case "09":
+                    lbMES.Text = "Septiembre";
+                    break;
+                case "10":
+                    lbMES.Text = "Octubre";
+                    break;
+                case "11":
+                    lbMES.Text = "Noviembre";
+                    break;
+                case "12":
+                    lbMES.Text = "Diciembre";
+                    break;
+
+                default:
+                    lbMES.Text = "Mes";
+                    break;
+            }
+           
         }
 
         public void sugerir()
@@ -293,7 +238,7 @@ namespace CapaPresentación
 
         private void FrmExportarPeriodicamente_Load(object sender, EventArgs e)
         {
-
+            txtAÑOEX.Focus();
             ultimo_exportado();
             sugerir();
             cambiar_mes();
@@ -374,6 +319,114 @@ namespace CapaPresentación
         private void button2_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void BtnSalir_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void BtnAceptar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int resultado = Convert.ToInt16(txtMES.Text) + 1;
+                int ultimoAño = Convert.ToInt16(txtAÑO.Text);
+                if (lbMES.Text == "Mes" || txtAÑOEX.Text == "")
+                {
+                    MessageBox.Show("Error, Verifique los campos para exportar", "Sistema DW Future", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                }
+                else
+                {
+                    int resultadoB = Convert.ToInt16(txtMESEX.Text);
+                    int ultimoAño2 = Convert.ToInt16(txtAÑOEX.Text);
+
+                    if (txtMES.Text == "12")
+                    {
+                        ultimoAño = ultimoAño + 1;
+                        resultado = 1;
+                    }
+                    if ((resultado == resultadoB) && (ultimoAño == ultimoAño2))
+                    {
+                        int mes = Convert.ToInt16(txtMESEX.Text);
+                        int año = Convert.ToInt16(txtAÑOEX.Text);
+                        Guardar_archivo_tiempo(ruta_tiempo, mes, año.ToString());
+                        tabla = Ntabla_dimensiones.Hventa(mes, año);
+                        Guardar_archivo_hventa(ruta_venta, tabla);
+                        if (tabla.Rows.Count == 0)
+                        { MessageBox.Show("Error, No se ha encontrado datos en el periodo para exportar", "Sistema DW Future", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+                        else
+                        {
+                            DateTime fecha = DateTime.Today;
+                            string fecha_Actual = Convert.ToString(fecha.ToString("dd-MM-yyyy"));
+                            string hora = DateTime.Now.Hour.ToString("D2") + ":" + DateTime.Now.Minute.ToString("D2") + ":" + DateTime.Now.Second.ToString("D2");
+                            MessageBox.Show("Datos exportados correctamente", "Sistema DW Future", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                            resp = Nregistro_exportacion.RegistrarDW("1", lbMES.Text, txtAÑOEX.Text, hora, fecha_Actual);
+                            ultimo_exportado();
+                            sugerir();
+                            cambiar_mes();
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Error, se debe exportar el año con los meses continuos", "Sistema DW Future", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+
+
+                }
+            }
+            catch (Exception)
+            {
+                if (lbMES.Text == "Mes" || txtAÑOEX.Text == "")
+                {
+                    MessageBox.Show("Verifique los Campos para Exportar", "Sistema DW Future", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                }
+                else
+                {
+                    int mes = Convert.ToInt16(txtMESEX.Text);
+                    int año = Convert.ToInt16(txtAÑOEX.Text);
+                    Guardar_archivo_tiempo(ruta_tiempo, mes, año.ToString());
+                    tabla = Ntabla_dimensiones.Hventa(mes, año);
+                    Guardar_archivo_hventa(ruta_venta, tabla);
+
+                    if (tabla.Rows.Count == 0)
+                    {
+                        MessageBox.Show("No se ha encontrado datos en el periodo para exportar", "Sistema DW Future", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    }
+                    else
+                    {
+                        DateTime fecha = DateTime.Today;
+                        string fecha_Actual = Convert.ToString(fecha.ToString("dd-MM-yyyy"));
+                        string hora = DateTime.Now.Hour.ToString("D2") + ":" + DateTime.Now.Minute.ToString("D2") + ":" + DateTime.Now.Second.ToString("D2");
+
+
+                        MessageBox.Show("Datos exportados correctamente", "Sistema DW Future", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                        resp = Nregistro_exportacion.RegistrarDW("1", lbMES.Text, txtAÑOEX.Text, hora, fecha_Actual);
+                        ultimo_exportado();
+                        sugerir();
+                        cambiar_mes();
+
+                    }
+
+                }
+
+            }
+        }
+
+        private void FrmExportarPeriodicamente_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+                this.Close();
+        }
+
+        private void FrmExportarPeriodicamente_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
         }
     }
 }

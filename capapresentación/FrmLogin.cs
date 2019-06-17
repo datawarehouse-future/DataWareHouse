@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Timers;
+using CapaNegocio;
 
 namespace CapaPresentación
 {
@@ -35,42 +36,86 @@ namespace CapaPresentación
 
         private void btnIngresar_Click(object sender, EventArgs e)
         {
+            IngresarSistema();
 
-            FrmPrincipal FrmPrincpal = new FrmPrincipal();
 
-            FrmPrincpal.Show();
-            
-            
-
-            /*
-            string username = txtUsuario.Text.Trim();
-            string pass = txtPassword.Text.Trim();
-
-            if (rdLogin.Checked)
-            {
-                if (isValidPassword(username,pass))
-                {
-                                        
-                }
-                else
-                {
-                    MessageBox.Show("Los datos son incorrectos");
-                }
-            }
-                
-            else
-            {
-
-            }
-            */
+           
         } 
             
 
-            /*
-        private bool isValidPassword(string username, string password)
+           
+        private bool usuarioValido(string username, string password)
         {
-            UserB
+
+
+
+            bool isValid = false;
+
+            try
+            {
+                DataTable DataUser = new DataTable();
+                DataUser = NUsuario.BuscarUsuario(username);
+
+                DataRow row = DataUser.Rows[0];
+                if (!string.IsNullOrEmpty(row["US_NombreUsuario"].ToString()))
+                {
+                    byte[] salt = (byte[])row["US_Salt"];
+                    byte[] pass = (byte[])row["US_Pass"];
+                    string nombreUsuario = row["US_NombreUsuario"].ToString();
+                    byte[] hashedPassword = Cryptographic.HashPasswordWithSalt(Encoding.UTF8.GetBytes(password), salt);
+
+                    if (hashedPassword.SequenceEqual(pass))
+                        isValid = true;
+                }
+               
+               
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Usuarios o Contraseñas incorrectos","Alerta",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                isValid = false;
+            }
+
+            return isValid;
+
+
+            /*   string UserForm = txtUsuario.Text;
+               string nombreUsuario = row["US_NombreUsuario"].ToString(); */
+
         }
-            */
+
+        private void FrmLogin_KeyDown(object sender, KeyEventArgs e)
+        {
+        
+            
+        }
+
+       
+private void GroupBox1_Enter(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void TxtPassword_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == Convert.ToChar(Keys.Enter))
+            {
+                IngresarSistema();
+            }
+        }
+
+        public void IngresarSistema()
+        {
+            string userName = txtUsuario.Text.Trim();
+            string userPass = txtPassword.Text.Trim();
+
+            if (usuarioValido(userName, userPass))
+            {
+                FrmPrincipal FrmPrincipal = new FrmPrincipal();
+                FrmPrincipal.Show();
+                this.Hide();
+            }
+            
+        }
     }
 }

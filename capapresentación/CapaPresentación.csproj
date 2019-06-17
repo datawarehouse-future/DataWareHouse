@@ -31,6 +31,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
@@ -155,6 +156,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\mal.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\aceptar_icon.JPG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\buscar_icon1.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

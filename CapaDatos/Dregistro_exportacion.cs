@@ -74,7 +74,6 @@ namespace CapaDatos
                 Sqlcmd.Parameters.AddWithValue("@mes_exportado", registrarDW.Mes);
                 Sqlcmd.Parameters.AddWithValue("@año_exportado", registrarDW.Año);
                 Sqlcmd.Parameters.AddWithValue("@hora", registrarDW.Hora);
-                Sqlcmd.Parameters.AddWithValue("@fecha", registrarDW.Fecha);
 
                 resp = Sqlcmd.ExecuteNonQuery() >= 1 ? "ok" : "No se pudo registrar";
 

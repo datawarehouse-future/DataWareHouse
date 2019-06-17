@@ -7,8 +7,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 using CapaNegocio;
+using System.Configuration;
 
 namespace CapaPresentación
 {
@@ -45,7 +47,7 @@ namespace CapaPresentación
         string sp_venta = "sp_SubirVenta";
         private void button1_Click(object sender, EventArgs e)
         {
-            btnACEPTAR.Enabled = false;
+            btnAceptar2.Enabled = false;
             visible(false);
             visiblelab(false);
             tmExiste.Enabled = true;
@@ -56,6 +58,10 @@ namespace CapaPresentación
 
         private void tmExiste_Tick(object sender, EventArgs e)
         {
+            FrmExportarPeriodicamente Frm = new FrmExportarPeriodicamente();
+
+            
+
             contador++;
             if (contador == 1)
             {
@@ -98,14 +104,17 @@ namespace CapaPresentación
                 tmOk.Enabled = false;
                 if (bandera == true)
                 {
-                    MessageBox.Show("Error, Verifique los archivos para importar");
-                    btnACEPTAR.Enabled = false;
+                    MessageBox.Show("Error, Verifique los archivos para importar", "Sistema DW Future", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    btnAceptar2.Enabled = false;
                     visible(false);
                 }
                 else
                 {
-                    btnACEPTAR.Enabled = true;
-                    btnCANCELAR.Enabled = true;
+                    /*Existen todos los archivos */ 
+                    button2.Enabled = true;
+                    btnAceptar2.Enabled = true;
+                    btnAceptar2.Enabled = true;
                 }
             }
         }
@@ -204,12 +213,27 @@ namespace CapaPresentación
             }
             if (contador2 == 18)
             {
-                tmOk.Enabled = false;
-                MessageBox.Show("Se han importado los datos correctamente");
 
+                tmOk.Enabled = false;
+                /* Vaciar Archivo VENTAS */
+                string path = @"C:\ARCHIVOS\venta.txt";
+                string path1 = @"C:\ARCHIVOS\tiempo.txt";
+
+
+                // This text is added only once to the file.
+                if (File.Exists(path))
+                {
+                    /* Create a file to write to.
+                    string createText = "Hello and Welcome" + Environment.NewLine;
+                    File.WriteAllText(path, createText, Encoding.UTF8); */
+                    File.Delete(path);
+                    File.Delete(path1);
+                }
+
+                MessageBox.Show("Se han importado los datos correctamente", "Sistema DW Future", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 visible(false);
                 visiblelab(false);
-                btnACEPTAR.Enabled = false;
+                btnAceptar2.Enabled = false;
 
                /* DateTime fecha = DateTime.Today;
                 string fecha_Actual = Convert.ToString(fecha.ToString("dd-MM-yyyy"));
@@ -233,9 +257,48 @@ namespace CapaPresentación
 
         }
 
-        private void btnCANCELAR_Click(object sender, EventArgs e)
+       
+
+        private void BtnSalir_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void Button2_Click(object sender, EventArgs e)
+        {
+            tmOk.Enabled = true;
+            contador2 = 0;
+        }
+
+        private void Button3_Click(object sender, EventArgs e)
+        {
+            btnAceptar2.Enabled = false;
+            visible(false);
+            visiblelab(false);
+            tmExiste.Enabled = true;
+            contador = 0;
+            contador2 = 0;
+            bandera = false;
+        }
+
+        private void BtnSalir_Click_1(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void FrmImportar_Load(object sender, EventArgs e)
+        {
+            button2.Enabled = false;
+        }
+        private void FrmImportar_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+                this.Close();
+        }
+
+        private void GroupBox2_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 }

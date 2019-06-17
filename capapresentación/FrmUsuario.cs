@@ -79,7 +79,8 @@ namespace CapaPresentación
                     }
                     byte[] salt = Cryptographic.GenerateSalt();
                     var hashedPassword = Cryptographic.HashPasswordWithSalt(Encoding.UTF8.GetBytes(password), salt);
-                    rpta = NUsuario.Insertar(Nombre, NombreUsuario, salt, hashedPassword, EstadoUsuario, TipoUsuario); 
+                    rpta = NUsuario.Insertar(Nombre, NombreUsuario, salt, hashedPassword, EstadoUsuario, TipoUsuario);
+                    MessageBox.Show("Usuario creado existosamente","Aviso",MessageBoxButtons.OK,MessageBoxIcon.Information);
                 }
             }
             catch (Exception)
@@ -94,7 +95,7 @@ namespace CapaPresentación
             VaciarCampos();
             DataTable User = NUsuario.BuscarUser();
             DataRow row = User.Rows[0];
-
+            comboEstado.Focus();
             txtIdUsuario.Text = row["Us_Id"].ToString();
             btnModificar.Enabled = false;
             btnEliminar.Enabled = false;
@@ -120,6 +121,11 @@ namespace CapaPresentación
         }
 
         private void pictureBox3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void PictureBox7_Click(object sender, EventArgs e)
         {
 
         }

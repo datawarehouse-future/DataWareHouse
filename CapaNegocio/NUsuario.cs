@@ -14,6 +14,9 @@ namespace CapaNegocio
     {
         //Método Insertar que llama al método Insertar de la Clase DUsuario de la capaDatos
 
+  
+
+
         public static string Insertar(string nombre, string nombre_usuario, byte[] salt, byte[] pass, int estado, string acceso)
         {
             
@@ -34,5 +37,13 @@ namespace CapaNegocio
             DUsuario Obj = new DUsuario();
             return Obj.BuscarIdUsuario();   
         }
+
+        public static DataTable BuscarUsuario(string UsuarioBuscar)
+        {
+            DUsuario Obj = new DUsuario();
+            Obj.NombreUsuario = UsuarioBuscar;
+            return Obj.ObtenerDesdeBd(Obj);
+        }
+
     }
 }

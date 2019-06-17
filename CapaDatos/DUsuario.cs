@@ -165,9 +165,41 @@ namespace CapaDatos
                 if (SqlCon.State == ConnectionState.Open) SqlCon.Close();
             }
             return DtResultado;
+        }
 
+        public DataTable ObtenerDesdeBd(DUsuario Usuario)
+        {
+            DataTable DtResultado = new DataTable("Usuario");
+            SqlConnection SqlCon = new SqlConnection();
 
+            try
+            {
+                //Código 
+                SqlCon.ConnectionString = DConexion.Cn;
+                SqlCon.Open();
+                //Establecer el comando 
+                SqlCommand SqlCmd = new SqlCommand();
+                SqlCmd.Connection = SqlCon;
+                SqlCmd.CommandText = "US_ObtenerCredenciales";
+                SqlCmd.CommandType = CommandType.StoredProcedure;
 
+                SqlParameter ParNombre = new SqlParameter();
+                ParNombre.ParameterName = "@Nombre_Usuario";
+                ParNombre.SqlDbType = SqlDbType.VarChar;
+                ParNombre.Size = 50;
+                ParNombre.Value = Usuario.NombreUsuario;
+                SqlCmd.Parameters.Add(ParNombre);
+
+                SqlDataAdapter SqlDat = new SqlDataAdapter(SqlCmd);
+                SqlDat.Fill(DtResultado);
+            }
+            catch (Exception)
+            {
+
+                DtResultado = null;
+            }
+
+            return DtResultado;
         }
     }
 }

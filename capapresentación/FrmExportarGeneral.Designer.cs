@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmExportarGeneral));
             this.label23 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -60,14 +61,16 @@
             this.label42 = new System.Windows.Forms.Label();
             this.label43 = new System.Windows.Forms.Label();
             this.label44 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.label4 = new System.Windows.Forms.Label();
-            this.lbUbicacion = new System.Windows.Forms.Label();
             this.lbBOT = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.btnAceptar = new System.Windows.Forms.Button();
+            this.label10 = new System.Windows.Forms.Label();
+            this.btnSalir = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
+            this.lbUbicacion = new System.Windows.Forms.Label();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbCliente)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbMedicoServicio)).BeginInit();
@@ -83,7 +86,7 @@
             // 
             this.label23.AutoSize = true;
             this.label23.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.label23.Location = new System.Drawing.Point(95, 503);
+            this.label23.Location = new System.Drawing.Point(25, 515);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(234, 13);
             this.label23.TabIndex = 13;
@@ -93,7 +96,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.label6.Location = new System.Drawing.Point(121, 58);
+            this.label6.Location = new System.Drawing.Point(14, 61);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(356, 26);
             this.label6.TabIndex = 12;
@@ -133,7 +136,7 @@
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.groupBox2.Location = new System.Drawing.Point(28, 143);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(453, 293);
+            this.groupBox2.Size = new System.Drawing.Size(408, 293);
             this.groupBox2.TabIndex = 11;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Exportar";
@@ -141,7 +144,7 @@
             // pbCliente
             // 
             this.pbCliente.Location = new System.Drawing.Point(352, 243);
-            this.pbCliente.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pbCliente.Margin = new System.Windows.Forms.Padding(2);
             this.pbCliente.Name = "pbCliente";
             this.pbCliente.Size = new System.Drawing.Size(26, 21);
             this.pbCliente.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -181,7 +184,7 @@
             // pbMedicoServicio
             // 
             this.pbMedicoServicio.Location = new System.Drawing.Point(352, 197);
-            this.pbMedicoServicio.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pbMedicoServicio.Margin = new System.Windows.Forms.Padding(2);
             this.pbMedicoServicio.Name = "pbMedicoServicio";
             this.pbMedicoServicio.Size = new System.Drawing.Size(26, 21);
             this.pbMedicoServicio.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -221,7 +224,7 @@
             // pbMedicoEnvia
             // 
             this.pbMedicoEnvia.Location = new System.Drawing.Point(352, 158);
-            this.pbMedicoEnvia.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pbMedicoEnvia.Margin = new System.Windows.Forms.Padding(2);
             this.pbMedicoEnvia.Name = "pbMedicoEnvia";
             this.pbMedicoEnvia.Size = new System.Drawing.Size(26, 21);
             this.pbMedicoEnvia.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -231,7 +234,7 @@
             // pbServicios
             // 
             this.pbServicios.Location = new System.Drawing.Point(352, 130);
-            this.pbServicios.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pbServicios.Margin = new System.Windows.Forms.Padding(2);
             this.pbServicios.Name = "pbServicios";
             this.pbServicios.Size = new System.Drawing.Size(26, 21);
             this.pbServicios.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -241,7 +244,7 @@
             // pbUsuarios
             // 
             this.pbUsuarios.Location = new System.Drawing.Point(352, 96);
-            this.pbUsuarios.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pbUsuarios.Margin = new System.Windows.Forms.Padding(2);
             this.pbUsuarios.Name = "pbUsuarios";
             this.pbUsuarios.Size = new System.Drawing.Size(26, 21);
             this.pbUsuarios.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -251,7 +254,7 @@
             // pbUN
             // 
             this.pbUN.Location = new System.Drawing.Point(352, 63);
-            this.pbUN.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pbUN.Margin = new System.Windows.Forms.Padding(2);
             this.pbUN.Name = "pbUN";
             this.pbUN.Size = new System.Drawing.Size(26, 21);
             this.pbUN.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -261,7 +264,7 @@
             // pbSeguro
             // 
             this.pbSeguro.Location = new System.Drawing.Point(352, 32);
-            this.pbSeguro.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pbSeguro.Margin = new System.Windows.Forms.Padding(2);
             this.pbSeguro.Name = "pbSeguro";
             this.pbSeguro.Size = new System.Drawing.Size(26, 21);
             this.pbSeguro.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -419,31 +422,83 @@
             this.label44.TabIndex = 10;
             this.label44.Text = "Seguro";
             // 
-            // button1
-            // 
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.button1.Location = new System.Drawing.Point(267, 450);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(90, 28);
-            this.button1.TabIndex = 4;
-            this.button1.Text = "CANCELAR";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // button2
-            // 
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.button2.Location = new System.Drawing.Point(149, 450);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(76, 28);
-            this.button2.TabIndex = 3;
-            this.button2.Text = "ACEPTAR";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
             // timer1
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // lbBOT
+            // 
+            this.lbBOT.AutoSize = true;
+            this.lbBOT.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbBOT.Location = new System.Drawing.Point(261, 514);
+            this.lbBOT.Name = "lbBOT";
+            this.lbBOT.Size = new System.Drawing.Size(0, 13);
+            this.lbBOT.TabIndex = 17;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.ForeColor = System.Drawing.Color.Black;
+            this.label8.Location = new System.Drawing.Point(81, 21);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(293, 25);
+            this.label8.TabIndex = 19;
+            this.label8.Text = "IMPORTAR DIMENSIONES";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.pictureBox1.Location = new System.Drawing.Point(12, 12);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(442, 43);
+            this.pictureBox1.TabIndex = 18;
+            this.pictureBox1.TabStop = false;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(157, 495);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(44, 13);
+            this.label9.TabIndex = 165;
+            this.label9.Text = "Aceptar";
+            // 
+            // btnAceptar
+            // 
+            this.btnAceptar.BackColor = System.Drawing.Color.White;
+            this.btnAceptar.BackgroundImage = global::CapaPresentación.Properties.Resources.aceptar_icon;
+            this.btnAceptar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnAceptar.Location = new System.Drawing.Point(137, 442);
+            this.btnAceptar.Name = "btnAceptar";
+            this.btnAceptar.Size = new System.Drawing.Size(85, 50);
+            this.btnAceptar.TabIndex = 0;
+            this.btnAceptar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnAceptar.UseVisualStyleBackColor = false;
+            this.btnAceptar.Click += new System.EventHandler(this.BtnAceptar_Click);
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(246, 495);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(51, 13);
+            this.label10.TabIndex = 163;
+            this.label10.Text = "ESC &Salir";
+            // 
+            // btnSalir
+            // 
+            this.btnSalir.BackColor = System.Drawing.Color.White;
+            this.btnSalir.BackgroundImage = global::CapaPresentación.Properties.Resources.salir_icon;
+            this.btnSalir.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnSalir.Location = new System.Drawing.Point(231, 442);
+            this.btnSalir.Name = "btnSalir";
+            this.btnSalir.Size = new System.Drawing.Size(85, 50);
+            this.btnSalir.TabIndex = 1;
+            this.btnSalir.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnSalir.UseVisualStyleBackColor = false;
+            this.btnSalir.Click += new System.EventHandler(this.BtnSalir_Click_1);
             // 
             // label4
             // 
@@ -468,41 +523,15 @@
             this.lbUbicacion.Text = "C:\\ARCHIVOS";
             this.lbUbicacion.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             // 
-            // lbBOT
-            // 
-            this.lbBOT.AutoSize = true;
-            this.lbBOT.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.lbBOT.Location = new System.Drawing.Point(95, 539);
-            this.lbBOT.Name = "lbBOT";
-            this.lbBOT.Size = new System.Drawing.Size(0, 21);
-            this.lbBOT.TabIndex = 17;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.ForeColor = System.Drawing.Color.DimGray;
-            this.label8.Location = new System.Drawing.Point(117, 21);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(293, 25);
-            this.label8.TabIndex = 19;
-            this.label8.Text = "IMPORTAR DIMENSIONES";
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.pictureBox1.Location = new System.Drawing.Point(12, 12);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(488, 43);
-            this.pictureBox1.TabIndex = 18;
-            this.pictureBox1.TabStop = false;
-            // 
             // FrmExportarGeneral
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(505, 534);
+            this.ClientSize = new System.Drawing.Size(463, 567);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.btnAceptar);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.btnSalir);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.lbBOT);
@@ -511,11 +540,11 @@
             this.Controls.Add(this.label23);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.button2);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(2);
+            this.MaximizeBox = false;
             this.Name = "FrmExportarGeneral";
-            this.Text = "FrmExportarGeneral";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbCliente)).EndInit();
@@ -556,15 +585,11 @@
         private System.Windows.Forms.Label label42;
         private System.Windows.Forms.Label label43;
         private System.Windows.Forms.Label label44;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Label lbMEDICOSERVICIO;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.PictureBox pbMedicoServicio;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label lbUbicacion;
         private System.Windows.Forms.Label lbBOT;
         private System.Windows.Forms.PictureBox pbCliente;
         private System.Windows.Forms.Label label1;
@@ -572,5 +597,11 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Button btnAceptar;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Button btnSalir;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label lbUbicacion;
     }
 }

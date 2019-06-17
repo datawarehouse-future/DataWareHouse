@@ -40,7 +40,8 @@ namespace CapaPresentación
         {
             if (lbUbicacion.Text == "")
             {
-                MessageBox.Show("Seleeccione ubicación para la exportacion de datos!");
+                MessageBox.Show("Seleccione ubicación para la exportacion de datos!", "Sistema DW Future", MessageBoxButtons.OK, MessageBoxIcon.Information);
+               
             }
             else {
                 lbBOT.Text = lbUbicacion.Text;
@@ -104,7 +105,8 @@ namespace CapaPresentación
             if (contador == 14)
             {
                 timer1.Enabled = false;
-                MessageBox.Show("Se ha exportado los datos correctamente");
+                MessageBox.Show("Se ha exportado los datos correctamente", "Sistema DW Future", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
                 visible(false);
                 /*  DateTime fecha = DateTime.Today;
 
@@ -155,6 +157,29 @@ namespace CapaPresentación
             this.Close();
         }
 
-      
+        private void BtnSalir_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void BtnAceptar_Click(object sender, EventArgs e)
+        {
+            if (lbUbicacion.Text == "")
+            {
+                MessageBox.Show("Seleccione ubicación para la exportacion de datos!", "Sistema DW Future", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                
+            }
+            else
+            {
+                lbBOT.Text = lbUbicacion.Text;
+                timer1.Enabled = true;
+                contador = 0;
+            }
+        }
+
+        private void BtnSalir_Click_1(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

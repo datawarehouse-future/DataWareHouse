@@ -175,6 +175,12 @@ namespace CapaPresentación
             obj.Show();
         }
 
-       
+        private void FrmPrincipal_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (MessageBox.Show("Realmente desea salir?", "Alerta", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) != DialogResult.OK)
+            {
+                e.Cancel = true;
+            }
+        }
     }
 }
