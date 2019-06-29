@@ -41,6 +41,7 @@
   <ItemGroup>
     <Compile Include="Class1.cs" />
     <Compile Include="Cryptographic.cs" />
+    <Compile Include="DcargaGeneral.cs" />
     <Compile Include="DConexion.cs" />
     <Compile Include="Dregistro_exportacion.cs" />
     <Compile Include="Dtabla_dimensiones.cs" />

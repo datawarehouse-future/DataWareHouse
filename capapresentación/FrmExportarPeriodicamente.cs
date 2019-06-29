@@ -373,8 +373,6 @@ namespace CapaPresentación
                     {
                         MessageBox.Show("Error, se debe exportar el año con los meses continuos", "Sistema DW Future", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
-
-
                 }
             }
             catch (Exception)

@@ -106,7 +106,7 @@ namespace CapaPresentación
                 {
                     MessageBox.Show("Error, Verifique los archivos para importar", "Sistema DW Future", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-                    btnAceptar2.Enabled = false;
+                    btnAceptar2.Enabled = true;
                     visible(false);
                 }
                 else
