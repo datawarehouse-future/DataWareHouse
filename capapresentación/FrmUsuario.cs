@@ -54,40 +54,7 @@ namespace CapaPresentación
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            try
-            {
-                string rpta = "";
-                if (this.txtNombre.Text == string.Empty)
-                {
-                    MessageBox.Show("Ingresar Nombre del Funcionario");
-                }
-                else
-                {
-                    string Nombre = this.txtNombre.Text;
-                    string NombreUsuario = this.txtUsuario.Text;
-                    string password = this.txtContrasenha.Text.ToUpper();
-                    string TipoUsuario = this.comboTipoUsuario.SelectedItem.ToString();
-                    int EstadoUsuario = 1;
-
-                    if (comboEstado.SelectedItem.ToString() == "HABILITADO")
-                    {
-                         EstadoUsuario = 1;
-                    }
-                    else
-                    {
-                        EstadoUsuario = 2;
-                    }
-                    byte[] salt = Cryptographic.GenerateSalt();
-                    var hashedPassword = Cryptographic.HashPasswordWithSalt(Encoding.UTF8.GetBytes(password), salt);
-                    rpta = NUsuario.Insertar(Nombre, NombreUsuario, salt, hashedPassword, EstadoUsuario, TipoUsuario);
-                    MessageBox.Show("Usuario creado existosamente","Aviso",MessageBoxButtons.OK,MessageBoxIcon.Information);
-                }
-            }
-            catch (Exception)
-            {
-                
-                throw;
-            }
+            GuardarUSuario();
         }
 
         private void btnNuevo_Click(object sender, EventArgs e)
@@ -128,6 +95,89 @@ namespace CapaPresentación
         private void PictureBox7_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void TxtUsuario_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == Convert.ToChar(Keys.Enter))
+            {
+                string usuario = txtUsuario.Text;
+                txtContrasenha.Text = " HOla";
+                txtContrasenha.Text = usuario;
+                txtContrasenha.Enabled = false;
+                comboTipoUsuario.Focus();
+            }
+
+            if (e.KeyChar == Convert.ToChar(Keys.Tab))
+            {
+                MessageBox.Show("Apretaste TAB");
+            }
+        }
+
+        private void TxtUsuario_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void TxtContrasenha_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void TxtUsuario_KeyUp(object sender, KeyEventArgs e)
+        {
+
+        }
+
+        private void ComboTipoUsuario_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == Convert.ToChar(Keys.Enter))
+            {
+                GuardarUSuario();
+            }
+        }
+
+        private void GuardarUSuario()
+        {
+            try
+            {
+                string rpta = "";
+                if (this.txtNombre.Text == string.Empty)
+                {
+                    MessageBox.Show("Ingresar Nombre del Funcionario");
+                }
+                else
+                {
+                    string Nombre = this.txtNombre.Text;
+                    string NombreUsuario = this.txtUsuario.Text;
+                    string password = this.txtContrasenha.Text.ToUpper();
+                    string TipoUsuario = this.comboTipoUsuario.SelectedItem.ToString();
+                    int EstadoUsuario = 1;
+
+                    if (comboEstado.SelectedItem.ToString() == "HABILITADO")
+                    {
+                        EstadoUsuario = 1;
+                    }
+                    else
+                    {
+                        EstadoUsuario = 2;
+                    }
+                    byte[] salt = Cryptographic.GenerateSalt();
+                    var hashedPassword = Cryptographic.HashPasswordWithSalt(Encoding.UTF8.GetBytes(password), salt);
+                    rpta = NUsuario.Insertar(Nombre, NombreUsuario, salt, hashedPassword, EstadoUsuario, TipoUsuario);
+                    MessageBox.Show("Usuario creado existosamente", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("El usuario ya esta creado", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                throw;
+            }
+        }
+
+        private void ComboTipoUsuario_Enter(object sender, EventArgs e)
+        {
+            txtContrasenha.Text = "hola putito";
         }
     }
 }

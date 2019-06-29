@@ -47,8 +47,6 @@ namespace CapaPresentación
         private bool usuarioValido(string username, string password)
         {
 
-
-
             bool isValid = false;
 
             try
@@ -91,7 +89,7 @@ namespace CapaPresentación
         }
 
        
-private void GroupBox1_Enter(object sender, EventArgs e)
+        private void GroupBox1_Enter(object sender, EventArgs e)
         {
            
         }
@@ -106,15 +104,23 @@ private void GroupBox1_Enter(object sender, EventArgs e)
 
         public void IngresarSistema()
         {
-            string userName = txtUsuario.Text.Trim();
-            string userPass = txtPassword.Text.Trim();
-
-            if (usuarioValido(userName, userPass))
+            if (txtPassword.TextLength >= 8)
             {
-                FrmPrincipal FrmPrincipal = new FrmPrincipal();
-                FrmPrincipal.Show();
-                this.Hide();
+                string userName = txtUsuario.Text.Trim();
+                string userPass = txtPassword.Text.Trim();
+
+                if (usuarioValido(userName, userPass))
+                {
+                    FrmPrincipal FrmPrincipal = new FrmPrincipal();
+                    FrmPrincipal.Show();
+                    this.Hide();
+                }
             }
+            else
+            {
+                MessageBox.Show("Por favor revise los datoss", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            
             
         }
     }

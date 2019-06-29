@@ -122,15 +122,19 @@
             this.txtUsuario.Name = "txtUsuario";
             this.txtUsuario.Size = new System.Drawing.Size(196, 20);
             this.txtUsuario.TabIndex = 2;
+            this.txtUsuario.TextChanged += new System.EventHandler(this.TxtUsuario_TextChanged);
+            this.txtUsuario.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtUsuario_KeyPress);
+            this.txtUsuario.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TxtUsuario_KeyUp);
             // 
             // txtContrasenha
             // 
             this.txtContrasenha.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtContrasenha.Enabled = false;
             this.txtContrasenha.Location = new System.Drawing.Point(92, 135);
             this.txtContrasenha.Name = "txtContrasenha";
-            this.txtContrasenha.PasswordChar = '*';
             this.txtContrasenha.Size = new System.Drawing.Size(196, 20);
             this.txtContrasenha.TabIndex = 3;
+            this.txtContrasenha.TextChanged += new System.EventHandler(this.TxtContrasenha_TextChanged);
             // 
             // txtIdUsuario
             // 
@@ -200,11 +204,13 @@
             this.comboTipoUsuario.Items.AddRange(new object[] {
             "ADMINISTRADOR",
             "FINANZAS"});
-            this.comboTipoUsuario.Location = new System.Drawing.Point(92, 161);
+            this.comboTipoUsuario.Location = new System.Drawing.Point(92, 164);
             this.comboTipoUsuario.Name = "comboTipoUsuario";
             this.comboTipoUsuario.Size = new System.Drawing.Size(196, 21);
             this.comboTipoUsuario.TabIndex = 4;
             this.comboTipoUsuario.Text = "ADMINISTRADOR";
+            this.comboTipoUsuario.Enter += new System.EventHandler(this.ComboTipoUsuario_Enter);
+            this.comboTipoUsuario.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ComboTipoUsuario_KeyPress);
             // 
             // listBox1
             // 
