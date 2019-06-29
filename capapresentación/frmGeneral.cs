@@ -86,12 +86,12 @@ namespace CapaPresentación
                     }
                     else
                     {
-                        MessageBox.Show("Error no se puede exportar");
+                        MessageBox.Show("Error no se puede exportar error en los meses de exportacion");
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Error no se puede exportar");
+                    MessageBox.Show("Error no se puede exportar error en los años de exportacion");
                 }
                 
             }
@@ -204,7 +204,6 @@ namespace CapaPresentación
         {
             this.Close();
         }
-
         private void label4_Click(object sender, EventArgs e)
         {
 
