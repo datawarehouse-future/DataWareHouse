@@ -66,7 +66,6 @@ namespace CapaPresentación
                         isValid = true;
                 }
                
-               
             }
             catch (Exception)
             {

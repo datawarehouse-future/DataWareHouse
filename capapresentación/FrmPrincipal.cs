@@ -182,5 +182,18 @@ namespace CapaPresentación
                 e.Cancel = true;
             }
         }
+
+        private void generalToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            Form Frm = this.MdiChildren.FirstOrDefault(y => y is frmGeneral);
+            if (Frm != null)
+            {
+                Frm.BringToFront();
+                return;
+            }
+            frmGeneral obj = new frmGeneral();
+            obj.MdiParent = this;
+            obj.Show();
+        }
     }
 }
