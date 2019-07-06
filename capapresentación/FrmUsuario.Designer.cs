@@ -125,13 +125,14 @@
             this.txtUsuario.TextChanged += new System.EventHandler(this.TxtUsuario_TextChanged);
             this.txtUsuario.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtUsuario_KeyPress);
             this.txtUsuario.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TxtUsuario_KeyUp);
+            this.txtUsuario.Leave += new System.EventHandler(this.TxtUsuario_Leave);
             // 
             // txtContrasenha
             // 
             this.txtContrasenha.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtContrasenha.Enabled = false;
             this.txtContrasenha.Location = new System.Drawing.Point(92, 135);
             this.txtContrasenha.Name = "txtContrasenha";
+            this.txtContrasenha.ReadOnly = true;
             this.txtContrasenha.Size = new System.Drawing.Size(196, 20);
             this.txtContrasenha.TabIndex = 3;
             this.txtContrasenha.TextChanged += new System.EventHandler(this.TxtContrasenha_TextChanged);
@@ -155,6 +156,7 @@
             // 
             // comboEstado
             // 
+            this.comboEstado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboEstado.FormattingEnabled = true;
             this.comboEstado.Items.AddRange(new object[] {
             "HABILITADO",
@@ -163,7 +165,6 @@
             this.comboEstado.Name = "comboEstado";
             this.comboEstado.Size = new System.Drawing.Size(116, 21);
             this.comboEstado.TabIndex = 0;
-            this.comboEstado.Text = "HABILITADO";
             // 
             // label8
             // 
@@ -200,6 +201,7 @@
             // 
             // comboTipoUsuario
             // 
+            this.comboTipoUsuario.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboTipoUsuario.FormattingEnabled = true;
             this.comboTipoUsuario.Items.AddRange(new object[] {
             "ADMINISTRADOR",
@@ -208,9 +210,9 @@
             this.comboTipoUsuario.Name = "comboTipoUsuario";
             this.comboTipoUsuario.Size = new System.Drawing.Size(196, 21);
             this.comboTipoUsuario.TabIndex = 4;
-            this.comboTipoUsuario.Text = "ADMINISTRADOR";
             this.comboTipoUsuario.Enter += new System.EventHandler(this.ComboTipoUsuario_Enter);
             this.comboTipoUsuario.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ComboTipoUsuario_KeyPress);
+            this.comboTipoUsuario.Leave += new System.EventHandler(this.ComboTipoUsuario_Leave);
             // 
             // listBox1
             // 

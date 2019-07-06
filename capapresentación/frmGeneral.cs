@@ -86,12 +86,15 @@ namespace CapaPresentación
                     }
                     else
                     {
-                        MessageBox.Show("Error no se puede exportar error en los meses de exportacion");
+                        MessageBox.Show("Error no se puede exportar error en los meses de exportacion","Información",MessageBoxButtons.OK,MessageBoxIcon.Information);
+
+                        
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Error no se puede exportar error en los años de exportacion");
+                    MessageBox.Show("Error no se puede exportar error en los meses de exportacion", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    
                 }
                 
             }
@@ -119,8 +122,8 @@ namespace CapaPresentación
                 string fecha_Actual = Convert.ToString(fecha.ToString("dd-MM-yyyy"));
                 string hora = DateTime.Now.Hour.ToString("D2") + ":" + DateTime.Now.Minute.ToString("D2") + ":" + DateTime.Now.Second.ToString("D2");
                 resp = Nregistro_exportacion.RegistrarDW("1", cbMEShasta.Text, cbAÑOHasta.Text, hora, fecha_Actual);
-                MessageBox.Show("Cargado");            
-                }
+                MessageBox.Show("Cargado de Datos Exitoso", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
         private void frmGeneral_Load(object sender, EventArgs e)
         {
@@ -205,6 +208,95 @@ namespace CapaPresentación
             this.Close();
         }
         private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Button3_Click(object sender, EventArgs e)
+        {
+            DialogResult respuesta;
+            if (Convert.ToInt16(cbAÑODesde.Text) < Convert.ToInt16(cbAÑOHasta.Text))
+            {
+                respuesta = MessageBox.Show("Se eliminará registros de exportación periodica, ¿esta seguro que desea continuar?", "Confirmación",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+
+                if (respuesta == DialogResult.Yes)
+                {
+                    int AñoDesde, MesDesde, AñoHasta, MesHasta;
+                    AñoDesde = Convert.ToInt16(cbAÑODesde.Text);
+                    MesDesde = Convert.ToInt16(obtenerMes(cbMESDesde));
+                    AñoHasta = Convert.ToInt16(cbAÑOHasta.Text);
+                    MesHasta = Convert.ToInt16(obtenerMes(cbMEShasta));
+                    int dias = DateTime.DaysInMonth(AñoHasta, MesHasta);
+                    DateTime desde = new DateTime(AñoDesde, MesDesde, 1);
+                    DateTime hasta = new DateTime(AñoHasta, MesHasta, dias);
+                    if (checkDimensiones.Checked == true)
+                    {
+                        NcargaGeneral.Cargar_Dimensiones();
+                    }
+                    NcargaGeneral.Cargar(desde, hasta);
+
+
+                    File.Delete(@"C:\ARCHIVOS\venta.txt");
+                    File.Delete(@"C:\ARCHIVOS\tiempo.txt");
+
+                    tmProgresaBar.Enabled = true;
+                }
+            }
+            else
+            {
+                if (Convert.ToInt16(cbAÑODesde.Text) == Convert.ToInt16(cbAÑOHasta.Text))
+                {
+                    if (obtenerMes(cbMESDesde) <= obtenerMes(cbMEShasta))
+                    {
+
+                        respuesta = MessageBox.Show("Se eliminará registros de exportación periodica, ¿esta seguro que desea continuar?", "Confirmación",
+                          MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+
+                        if (respuesta == DialogResult.Yes)
+                        {
+                            int AñoDesde, MesDesde, AñoHasta, MesHasta;
+                            AñoDesde = Convert.ToInt16(cbAÑODesde.Text);
+                            MesDesde = Convert.ToInt16(obtenerMes(cbMESDesde));
+                            AñoHasta = Convert.ToInt16(cbAÑOHasta.Text);
+                            MesHasta = Convert.ToInt16(obtenerMes(cbMEShasta));
+                            int dias = DateTime.DaysInMonth(AñoHasta, MesHasta);
+                            DateTime desde = new DateTime(AñoDesde, MesDesde, 1);
+                            DateTime hasta = new DateTime(AñoHasta, MesHasta, dias);
+                            if (checkDimensiones.Checked == true)
+                            {
+                                NcargaGeneral.Cargar_Dimensiones();
+                            }
+                            NcargaGeneral.Cargar(desde, hasta);
+
+                            File.Delete(@"C:\ARCHIVOS\venta.txt");
+                            File.Delete(@"C:\ARCHIVOS\tiempo.txt");
+
+                            tmProgresaBar.Enabled = true;
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Error no se puede exportar error en los meses de exportacion", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Error no se puede exportar error en los meses de exportacion", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                }
+
+            }
+        }
+
+        private void BtnSalir_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void PictureBox1_Click(object sender, EventArgs e)
         {
 
         }
