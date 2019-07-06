@@ -41,6 +41,7 @@
   <ItemGroup>
     <Compile Include="Class1.cs" />
     <Compile Include="NcargaGeneral.cs" />
+    <Compile Include="Noperaciones.cs" />
     <Compile Include="Nregistro_exportacion.cs" />
     <Compile Include="Ntabla_dimensiones.cs" />
     <Compile Include="NUsuario.cs" />

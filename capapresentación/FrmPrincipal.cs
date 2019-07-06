@@ -195,5 +195,18 @@ namespace CapaPresentación
             obj.MdiParent = this;
             obj.Show();
         }
+
+        private void AuditoriaDeOperacionesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form Frm = this.MdiChildren.FirstOrDefault(y => y is Frm_Operaciones);
+            if (Frm != null)
+            {
+                Frm.BringToFront();
+                return;
+            }
+            Frm_Operaciones obj = new Frm_Operaciones();
+            obj.MdiParent = this;
+            obj.Show();
+        }
     }
 }
