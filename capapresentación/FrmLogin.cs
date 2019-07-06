@@ -103,7 +103,7 @@ namespace CapaPresentación
 
         public void IngresarSistema()
         {
-            if (txtPassword.TextLength >= 8)
+            if (txtPassword.TextLength >= 4)
             {
                 string userName = txtUsuario.Text.Trim();
                 string userPass = txtPassword.Text.Trim();

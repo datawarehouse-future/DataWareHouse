@@ -62,11 +62,14 @@ namespace CapaPresentación
             VaciarCampos();
             DataTable User = NUsuario.BuscarUser();
             DataRow row = User.Rows[0];
-            comboEstado.Focus();
+            txtNombre.Focus();
+            comboEstado.Text = comboEstado.Items[0].ToString();
+            comboTipoUsuario.Text = comboTipoUsuario.Items[0].ToString();
             txtIdUsuario.Text = row["Us_Id"].ToString();
             btnModificar.Enabled = false;
             btnEliminar.Enabled = false;
             btnBuscar.Enabled = false;
+
             
         }
 
@@ -99,19 +102,7 @@ namespace CapaPresentación
 
         private void TxtUsuario_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar == Convert.ToChar(Keys.Enter))
-            {
-                string usuario = txtUsuario.Text;
-                txtContrasenha.Text = " HOla";
-                txtContrasenha.Text = usuario;
-                txtContrasenha.Enabled = false;
-                comboTipoUsuario.Focus();
-            }
-
-            if (e.KeyChar == Convert.ToChar(Keys.Tab))
-            {
-                MessageBox.Show("Apretaste TAB");
-            }
+           
         }
 
         private void TxtUsuario_TextChanged(object sender, EventArgs e)
@@ -139,18 +130,38 @@ namespace CapaPresentación
 
         private void GuardarUSuario()
         {
-            try
+            int contador = 0;
+
+            foreach (Control ctrl in this.groupBox1.Controls)
             {
-                string rpta = "";
-                if (this.txtNombre.Text == string.Empty)
+                if (ctrl is TextBox)
                 {
-                    MessageBox.Show("Ingresar Nombre del Funcionario");
+                    TextBox text = ctrl as TextBox;
+                    
+
+                    if (text.TextLength > 3)
+                    {
+                        contador++;
+
+                    }
+                    else
+                    {
+                        
+                    }
+                       
+                    
                 }
-                else
+            }
+
+            if (contador == 4)
+            {
+                try
                 {
+                    string rpta = "";
+
                     string Nombre = this.txtNombre.Text;
                     string NombreUsuario = this.txtUsuario.Text;
-                    string password = this.txtContrasenha.Text.ToUpper();
+                    string password = this.txtContrasenha.Text;
                     string TipoUsuario = this.comboTipoUsuario.SelectedItem.ToString();
                     int EstadoUsuario = 1;
 
@@ -166,18 +177,38 @@ namespace CapaPresentación
                     var hashedPassword = Cryptographic.HashPasswordWithSalt(Encoding.UTF8.GetBytes(password), salt);
                     rpta = NUsuario.Insertar(Nombre, NombreUsuario, salt, hashedPassword, EstadoUsuario, TipoUsuario);
                     MessageBox.Show("Usuario creado existosamente", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("El usuario ya esta creado", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    /* throw; */
                 }
             }
-            catch (Exception)
+            else
             {
-                MessageBox.Show("El usuario ya esta creado", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                throw;
+                MessageBox.Show("Existen campos no llenados, o incumplen el mínimo de 4 caracteres y máx 12", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+           
+
         }
+        
+        
 
         private void ComboTipoUsuario_Enter(object sender, EventArgs e)
         {
-            txtContrasenha.Text = "hola putito";
+            txtContrasenha.Text = txtUsuario.Text;
+
+        }
+
+        private void TxtUsuario_Leave(object sender, EventArgs e)
+        {
+            comboTipoUsuario.Focus();
+        }
+
+        private void ComboTipoUsuario_Leave(object sender, EventArgs e)
+        {
+
         }
     }
 }
