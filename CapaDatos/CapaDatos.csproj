@@ -43,7 +43,6 @@
     <Compile Include="Cryptographic.cs" />
     <Compile Include="DcargaGeneral.cs" />
     <Compile Include="DConexion.cs" />
-    <Compile Include="Doperaciones.cs" />
     <Compile Include="Dregistro_exportacion.cs" />
     <Compile Include="Dtabla_dimensiones.cs" />
     <Compile Include="DUsuario.cs" />

@@ -31,11 +31,9 @@ namespace CapaPresentación
         string ruta_medico_servicio = @"C:\ARCHIVOS\medico_servicio.txt";
         string ruta_usuario = @"C:\ARCHIVOS\usuarios.txt";
         string ruta_unidad_negocio= @"C:\ARCHIVOS\unidad_negocio.txt";
-        string ruta_gruposervicio = @"C:\ARCHIVOS\gruposervicio.txt";
         string ruta_cliente = @"C:\ARCHIVOS\cliente.txt";
         string ruta_tiempo = @"C:\ARCHIVOS\tiempo.txt";
         string ruta_venta = @"C:\ARCHIVOS\venta.txt";
-
 
         /*Sp de Carga de a la Bd*/
         string sp_seguro = "sp_SubirSeguro";
@@ -44,7 +42,6 @@ namespace CapaPresentación
         string sp_medicoServicio = "sp_SubirMedicoServicio";
         string sp_usuario = "sp_SubirUsuario";
         string sp_UnidadNegocio = "sp_Unidad_Negocio";
-        string sp_GrupoServicio = "sp_SubirGrupoServicio";
         string sp_cliente = "sp_SubirCliente";
         string sp_tiempo = "sp_SubirTiempo";
         string sp_venta = "sp_SubirVenta";
@@ -90,10 +87,6 @@ namespace CapaPresentación
             {
                 existe(ruta_unidad_negocio, pbUn);              
             }
-            if (contador == 33)
-            {
-                existe(ruta_gruposervicio, pbGrupo);
-            }
             if (contador == 35)
             {
                 existe(ruta_cliente, pbCliente);
@@ -133,7 +126,6 @@ namespace CapaPresentación
             pbMedicoServicio.Visible = bandera;
             pbUsuario.Visible = bandera;
             pbUn.Visible = bandera;
-            pbGrupo.Visible = bandera;
             pbCliente.Visible = bandera;
             pbTiempo.Visible = bandera;
             pbVenta.Visible = bandera;
@@ -147,10 +139,13 @@ namespace CapaPresentación
             lbMedicoServicio.Visible = bandera;
             lbUSUARIO.Visible = bandera;
             lbUN.Visible = bandera;
-            lbGRUPOS.Visible = bandera;
             lbCLIENTE.Visible = bandera;
             lbTIEMPO.Visible = bandera;
             lbVENTA.Visible = bandera;
+         
+           
+   
+          
         }
         public void existe(string ruta,PictureBox pb) {
 
@@ -200,28 +195,23 @@ namespace CapaPresentación
                 cargar(sp_UnidadNegocio);
                 lbUN.Visible = true;
             }
-            if (contador2 == 13)
-            {
-                cargar(sp_GrupoServicio);
-                lbGRUPOS.Visible = true;
-            }
 
-            if (contador2 == 15)
+            if (contador2 == 13)
             {
                 cargar(sp_cliente);
                 lbCLIENTE.Visible = true;
             }
-            if (contador2 == 17)
+            if (contador2 == 15)
             {
                 cargar(sp_tiempo);
                 lbTIEMPO.Visible = true;
             }
-            if (contador2 == 19)
+            if (contador2 == 17)
             {
                 cargar(sp_venta);
                 lbVENTA.Visible = true;
             }
-            if (contador2 == 20)
+            if (contador2 == 18)
             {
 
                 tmOk.Enabled = false;
@@ -239,12 +229,8 @@ namespace CapaPresentación
                     File.Delete(path);
                     File.Delete(path1);
                 }
-                DateTime fecha = DateTime.Today;
-                string fecha_Actual = Convert.ToString(fecha.ToString("dd-MM-yyyy"));
-                string hora = DateTime.Now.Hour.ToString("D2") + ":" + DateTime.Now.Minute.ToString("D2") + ":" + DateTime.Now.Second.ToString("D2");
-                MessageBox.Show("Se han importado los datos correctamente", "Sistema DW Future", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                resp = Noperaciones.Registrar(1, "Importacion de datos", hora, fecha);
 
+                MessageBox.Show("Se han importado los datos correctamente", "Sistema DW Future", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 visible(false);
                 visiblelab(false);
                 btnAceptar2.Enabled = false;

@@ -39,28 +39,14 @@ namespace CapaPresentación
                         int dias = DateTime.DaysInMonth(AñoHasta, MesHasta);
                         DateTime desde = new DateTime(AñoDesde, MesDesde, 1);
                         DateTime hasta = new DateTime(AñoHasta, MesHasta, dias);
-
-                    DateTime fecha = DateTime.Today;
-                    string fecha_Actual = Convert.ToString(fecha.ToString("dd-MM-yyyy"));
-                    string hora = DateTime.Now.Hour.ToString("D2") + ":" + DateTime.Now.Minute.ToString("D2") + ":" + DateTime.Now.Second.ToString("D2");
-
-                    if (checkDimensiones.Checked==true)
+                        if (checkDimensiones.Checked==true)
                         {
                         NcargaGeneral.Cargar_Dimensiones();
+                        }
                         NcargaGeneral.Cargar(desde, hasta);
-                        resp = Noperaciones.Registrar(1, "Exportacion General de datos con dimensiones desde el mes "+cbMESDesde.Text+" del año "+cbAÑODesde.Text+" Hasta el mes de "+cbMEShasta.Text+" Del "+cbAÑOHasta.Text, hora, fecha);
 
-                    }
-                    else
-                         {
-                          NcargaGeneral.Cargar(desde, hasta);
-                          resp = Noperaciones.Registrar(1, "Exportacion General de datos solo ventas desde el mes " + cbMESDesde.Text + " del año " + cbAÑODesde.Text + " Hasta el mes de " + cbMEShasta.Text + " Del " + cbAÑOHasta.Text, hora, fecha);
-
-                    }
-
-
-
-                    File.Delete(@"C:\ARCHIVOS\venta.txt");
+                        
+                        File.Delete(@"C:\ARCHIVOS\venta.txt");
                         File.Delete(@"C:\ARCHIVOS\tiempo.txt");
                        
                         tmProgresaBar.Enabled = true;
@@ -86,25 +72,11 @@ namespace CapaPresentación
                             int dias = DateTime.DaysInMonth(AñoHasta, MesHasta);
                             DateTime desde = new DateTime(AñoDesde, MesDesde, 1);
                             DateTime hasta = new DateTime(AñoHasta, MesHasta, dias);
-
-
-                            DateTime fecha = DateTime.Today;
-                            string fecha_Actual = Convert.ToString(fecha.ToString("dd-MM-yyyy"));
-                            string hora = DateTime.Now.Hour.ToString("D2") + ":" + DateTime.Now.Minute.ToString("D2") + ":" + DateTime.Now.Second.ToString("D2");
-
                             if (checkDimensiones.Checked == true)
                             {
                                 NcargaGeneral.Cargar_Dimensiones();
-                                NcargaGeneral.Cargar(desde, hasta);
-                                resp = Noperaciones.Registrar(1, "Exportacion General de datos con dimensiones desde el mes " + cbMESDesde.Text + " del año " + cbAÑODesde.Text + " Hasta el mes de " + cbMEShasta.Text + " Del " + cbAÑOHasta.Text, hora, fecha);
-
                             }
-                            else
-                            {
-                                NcargaGeneral.Cargar(desde, hasta);
-                                resp = Noperaciones.Registrar(1, "Exportacion General de datos solo ventas desde el mes " + cbMESDesde.Text + " del año " + cbAÑODesde.Text + " Hasta el mes de " + cbMEShasta.Text + " Del " + cbAÑOHasta.Text, hora, fecha);
-
-                            }
+                            NcargaGeneral.Cargar(desde, hasta);
 
                             File.Delete(@"C:\ARCHIVOS\venta.txt");
                             File.Delete(@"C:\ARCHIVOS\tiempo.txt");

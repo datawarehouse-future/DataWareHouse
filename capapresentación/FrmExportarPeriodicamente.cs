@@ -315,14 +315,17 @@ namespace CapaPresentación
         {
 
         }
+
         private void button2_Click(object sender, EventArgs e)
         {
             this.Close();
         }
+
         private void BtnSalir_Click(object sender, EventArgs e)
         {
             this.Close();
         }
+
         private void BtnAceptar_Click(object sender, EventArgs e)
         {
             try
@@ -361,8 +364,6 @@ namespace CapaPresentación
                             MessageBox.Show("Datos exportados correctamente", "Sistema DW Future", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                             resp = Nregistro_exportacion.RegistrarDW("1", lbMES.Text, txtAÑOEX.Text, hora, fecha_Actual);
-                            resp = Noperaciones.Registrar(1, "Exportacion Periodica del mes de "+lbMES.Text+" del "+txtAÑO.Text, hora, fecha);
-
                             ultimo_exportado();
                             sugerir();
                             cambiar_mes();
@@ -414,11 +415,13 @@ namespace CapaPresentación
 
             }
         }
+
         private void FrmExportarPeriodicamente_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Escape)
                 this.Close();
         }
+
         private void FrmExportarPeriodicamente_KeyPress(object sender, KeyPressEventArgs e)
         {
 

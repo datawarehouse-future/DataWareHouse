@@ -18,7 +18,6 @@ namespace CapaPresentación
         {
             InitializeComponent();
         }
-        string resp;
         int contador;
         DataTable tabla = new DataTable();
         /*SP de dimensiones*/
@@ -29,7 +28,6 @@ namespace CapaPresentación
         string sp_MedicoServicio = "sp_SeleccionarMedicoServicio";
         string sp_Servicio = "sp_SeleccionarServicio";
         string sp_Cliente = "sp_SeleccionarClientes";
-        string sp_GrupoServicio = "sp_SeleccionarGrupoServicio";
         /*Direcciones donde se guardara los datos de dimensiones en archivo de texto*/
         string ruta_Dseguro = "C:/ARCHIVOS/seguros.txt";
         string ruta_DunidadNegocio = "C:/ARCHIVOS/unidad_negocio.txt";
@@ -38,8 +36,6 @@ namespace CapaPresentación
         string ruta_DmedicoServicio ="C:/ARCHIVOS/medico_servicio.txt";
         string ruta_Dservicio = "C:/ARCHIVOS/servicio.txt";
         string ruta_Dcliente = "C:/ARCHIVOS/cliente.txt";
-        string ruta_D_grupoServicio = "C:/ARCHIVOS/gruposervicio.txt";
-
         private void button2_Click(object sender, EventArgs e)
         {
             if (lbUbicacion.Text == "")
@@ -53,6 +49,7 @@ namespace CapaPresentación
                 contador = 0;
             }
         }
+
         private void timer1_Tick(object sender, EventArgs e)
         {
             contador++;
@@ -98,13 +95,6 @@ namespace CapaPresentación
                 tabla = Ntabla_dimensiones.Dimension(sp_Servicio);
                 Guardar_archivo(ruta_Dservicio, tabla);
             }
-            if (contador == 11)
-            {
-                pbGRUPO.Visible = true;
-                pbGRUPO.Image = Properties.Resources.bien;
-                tabla = Ntabla_dimensiones.Dimension(sp_GrupoServicio);
-                Guardar_archivo(ruta_D_grupoServicio, tabla);
-            }
             if (contador == 14)
             {
                 pbCliente.Visible = true;
@@ -117,11 +107,14 @@ namespace CapaPresentación
                 timer1.Enabled = false;
                 MessageBox.Show("Se ha exportado los datos correctamente", "Sistema DW Future", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                  visible(false);
-                  DateTime fecha = DateTime.Today;
+                visible(false);
+                /*  DateTime fecha = DateTime.Today;
+
+                  string fecha_Actual = Convert.ToString(fecha.ToString("dd-MM-yyyy"));
                   string hora = DateTime.Now.Hour.ToString("D2") + ":" + DateTime.Now.Minute.ToString("D2") + ":" + DateTime.Now.Second.ToString("D2");
-                  resp = Noperaciones.Registrar(1, "Exportacion de todas las dimensiones", hora, fecha);
-                  visible(false);
+
+                  resp = Nregistrar_DW.RegistrarDW(Program.id_usuario, "todo", "todo", hora, fecha_Actual);
+                  visible(false);*/
 
             }
         }
@@ -152,13 +145,13 @@ namespace CapaPresentación
             pbServicios.Visible = bandera;
             pbMedicoEnvia.Visible = bandera;
             pbMedicoServicio.Visible = bandera;
-            pbGRUPO.Visible = bandera;
             pbCliente.Visible = bandera;
         }
         private void label36_Click(object sender, EventArgs e)
         {
 
         }
+
         private void button1_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -171,11 +164,10 @@ namespace CapaPresentación
 
         private void BtnAceptar_Click(object sender, EventArgs e)
         {
-
-
             if (lbUbicacion.Text == "")
             {
-                MessageBox.Show("Seleccione ubicación para la exportacion de datos!", "Sistema DW Future", MessageBoxButtons.OK, MessageBoxIcon.Information); 
+                MessageBox.Show("Seleccione ubicación para la exportacion de datos!", "Sistema DW Future", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                
             }
             else
             {
@@ -184,6 +176,7 @@ namespace CapaPresentación
                 contador = 0;
             }
         }
+
         private void BtnSalir_Click_1(object sender, EventArgs e)
         {
             this.Close();
